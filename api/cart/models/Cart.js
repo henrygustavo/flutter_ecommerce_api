@@ -1,80 +1,54 @@
-"use strict";
+'use strict';
 
 /**
- * Cart.js controller
- *
- * @description: A set of functions called "actions" for managing `Cart`.
+ * Lifecycle callbacks for the `Cart` model.
  */
 
 module.exports = {
-  /**
-   * Retrieve cart records.
-   *
-   * @return {Object|Array}
-   */
+  // Before saving a value.
+  // Fired before an `insert` or `update` query.
+  // beforeSave: async (model) => {},
 
-  find: async ctx => {
-    if (ctx.query._q) {
-      return strapi.services.cart.search(ctx.query);
-    } else {
-      return strapi.services.cart.fetchAll(ctx.query);
-    }
-  },
+  // After saving a value.
+  // Fired after an `insert` or `update` query.
+  // afterSave: async (model, result) => {},
 
-  /**
-   * Retrieve a cart record.
-   *
-   * @return {Object}
-   */
+  // Before fetching all values.
+  // Fired before a `fetchAll` operation.
+  // beforeFetchAll: async (model) => {},
 
-  findOne: async ctx => {
-    if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
-      return ctx.notFound();
-    }
+  // After fetching all values.
+  // Fired after a `fetchAll` operation.
+  // afterFetchAll: async (model, results) => {},
 
-    return strapi.services.cart.fetch(ctx.params);
-  },
+  // Fired before a `fetch` operation.
+  // beforeFetch: async (model) => {},
 
-  /**
-   * Count cart records.
-   *
-   * @return {Number}
-   */
+  // After fetching a value.
+  // Fired after a `fetch` operation.
+  // afterFetch: async (model, result) => {},
 
-  count: async ctx => {
-    return strapi.services.cart.count(ctx.query);
-  },
+  // Before creating a value.
+  // Fired before an `insert` query.
+  // beforeCreate: async (model) => {},
 
-  /**
-   * Create a/an cart record.
-   *
-   * @return {Object}
-   */
+  // After creating a value.
+  // Fired after an `insert` query.
+  // afterCreate: async (model, result) => {},
 
-  create: async ctx => {
-    return strapi.services.cart.add(ctx.request.body);
-  },
+  // Before updating a value.
+  // Fired before an `update` query.
+  // beforeUpdate: async (model) => {},
 
-  /**
-   * Update a/an cart record.
-   *
-   * @return {Object}
-   */
+  // After updating a value.
+  // Fired after an `update` query.
+  // afterUpdate: async (model, result) => {},
 
-  update: async (ctx, next) => {
-    const { products } = ctx.request.body;
-    return strapi.services.cart.edit(ctx.params, {
-      products: JSON.parse(products)
-    });
-  },
+  // Before destroying a value.
+  // Fired before a `delete` query.
+  // beforeDestroy: async (model) => {},
 
-  /**
-   * Destroy a/an cart record.
-   *
-   * @return {Object}
-   */
-
-  destroy: async (ctx, next) => {
-    return strapi.services.cart.remove(ctx.params);
-  }
+  // After destroying a value.
+  // Fired after a `delete` query.
+  // afterDestroy: async (model, result) => {}
 };
