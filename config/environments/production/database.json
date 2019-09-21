@@ -4,16 +4,10 @@
     "default": {
       "connector": "strapi-hook-mongoose",
       "settings": {
-        "client": "mongo",
-        "host": "${process.env.DATABASE_HOST || '127.0.0.1'}",
-        "port": "${process.env.DATABASE_PORT || 27017}",
-        "database": "${process.env.DATABASE_NAME || 'strapi'}",
-        "username": "${process.env.DATABASE_USERNAME || ''}",
-        "password": "${process.env.DATABASE_PASSWORD || ''}",
-        "srv": "${process.env.DATABASE_SRV || false}"
+        "uri": "mongodb+srv://henrygustavo:henry_16@flutter-e-commerce-0oymf.mongodb.net/test?retryWrites=true&w=majority"
       },
       "options": {
-        "ssl": "${process.env.DATABASE_SSL || false}"
+        "ssl": true
       }
     }
   }
