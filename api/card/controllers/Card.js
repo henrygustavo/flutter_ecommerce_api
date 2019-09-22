@@ -16,6 +16,7 @@ module.exports = {
   },
   add: async ctx => {
     const { customer, source } = ctx.request.body;
+    strapi.log.info(customer); // ctx.log.info(folders);
     const card = await stripe.customers.createSource(customer, { source });
     ctx.send(card);
   }
