@@ -13,5 +13,10 @@ module.exports = {
     const cardData = customerData.sources.data;
     ctx.send(cardData);
     // ctx.send("hello world");
+  },
+  add: async ctx => {
+    const { customer, source } = ctx.request.body;
+    const card = await stripe.customers.createSource(customer, { source });
+    ctx.send(card);
   }
 };
