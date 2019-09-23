@@ -1,5 +1,5 @@
 {
   "myCustomConfiguration": "This configuration is accessible through strapi.config.myCustomConfiguration",
   "API_URL" : "https://flutter-ecommerce-api.herokuapp.com/",
-  "STRIPE_SECRET_KEY": "pk_test_24MfPM77rrcgpW2WhYngl5Ma00b5rG5SAf"
+  "STRIPE_SECRET_KEY": "sk_test_wPXtCKHyRKCLoa1GTKzOv9t800GFnzwFNM"
 }
