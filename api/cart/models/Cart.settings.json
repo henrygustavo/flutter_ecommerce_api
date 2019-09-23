@@ -11,8 +11,8 @@
   "attributes": {
     "products": {
       "collection": "product",
-      "via": "carts",
-      "dominant": true
+      "dominant": true,
+      "via": "carts"
     }
   }
 }
