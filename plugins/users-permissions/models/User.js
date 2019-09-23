@@ -34,6 +34,7 @@ module.exports = {
   // Fired before `insert` query.
   beforeCreate: async model => {
     const cart = await axios.post(strapi.config.API_URL+"carts");
+    stripe.setApiKey(strapi.config.STRIPE_SECRET_KEY);
     const customer = await stripe.customers.create({
       email: model.get("email")
     });
