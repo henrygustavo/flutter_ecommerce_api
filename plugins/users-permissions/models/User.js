@@ -1,7 +1,7 @@
 "use strict";
 
 const axios = require("axios");
-const stripe = require("stripe")("sk_test_wPXtCKHyRKCLoa1GTKzOv9t800GFnzwFNM");
+const stripe = require("stripe")(strapi.config.STRIPE_SECRET_KEY);
 /**
  * Lifecycle callbacks for the `User` model.
  */
@@ -33,7 +33,7 @@ module.exports = {
   // Before creating a value.
   // Fired before `insert` query.
   beforeCreate: async model => {
-    const cart = await axios.post("https://flutter-ecommerce-api.herokuapp.com/carts");
+    const cart = await axios.post(strapi.config.API_URL+"carts");
     const customer = await stripe.customers.create({
       email: model.get("email")
     });
