@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "Banking",
+  "info": {
+    "name": "banking",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "userId": {
+      "type": "string"
+    },
+    "accountNumber": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "integer"
+    }
+  }
+}

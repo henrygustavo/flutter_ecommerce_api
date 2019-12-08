@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/carts",
-      "handler": "Cart.find",
+      "path": "/bankings",
+      "handler": "Banking.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/carts/count",
-      "handler": "Cart.count",
+      "path": "/bankings/count",
+      "handler": "Banking.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/carts/:_id",
-      "handler": "Cart.findOne",
+      "path": "/bankings/:_id",
+      "handler": "Banking.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/carts",
-      "handler": "Cart.create",
+      "path": "/bankings",
+      "handler": "Banking.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/carts/:_id",
-      "handler": "Cart.update",
+      "path": "/bankings/:_id",
+      "handler": "Banking.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/carts/:_id",
-      "handler": "Cart.destroy",
+      "path": "/bankings/:_id",
+      "handler": "Banking.destroy",
       "config": {
         "policies": []
       }
