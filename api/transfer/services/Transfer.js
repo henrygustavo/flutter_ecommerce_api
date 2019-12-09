@@ -1,9 +1,9 @@
 'use strict';
 
-/* global Banking */
+/* global Transfer */
 
 /**
- * Banking.js service
+ * Transfer.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -15,44 +15,44 @@ const { convertRestQueryParams, buildQuery } = require('strapi-utils');
 module.exports = {
 
   /**
-   * Promise to fetch all bankings.
+   * Promise to fetch all transfers.
    *
    * @return {Promise}
    */
 
   fetchAll: (params, populate) => {
     const filters = convertRestQueryParams(params);
-    const populateOpt = populate || Banking.associations
+    const populateOpt = populate || Transfer.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
 
     return buildQuery({
-      model: Banking,
+      model: Transfer,
       filters,
       populate: populateOpt,
     });
   },
 
   /**
-   * Promise to fetch a/an banking.
+   * Promise to fetch a/an transfer.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Banking.associations
+    const populate = Transfer.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Banking
-      .findOne(_.pick(params, _.keys(Banking.schema.paths)))
+    return Transfer
+      .findOne(_.pick(params, _.keys(Transfer.schema.paths)))
       .populate(populate);
   },
 
   /**
-   * Promise to count bankings.
+   * Promise to count transfers.
    *
    * @return {Promise}
    */
@@ -61,64 +61,64 @@ module.exports = {
     const filters = convertRestQueryParams(params);
 
     return buildQuery({
-      model: Banking,
+      model: Transfer,
       filters: { where: filters.where },
     })
       .count()
   },
 
   /**
-   * Promise to add a/an banking.
+   * Promise to add a/an transfer.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Banking.associations.map(ast => ast.alias));
-    const data = _.omit(values, Banking.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Transfer.associations.map(ast => ast.alias));
+    const data = _.omit(values, Transfer.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Banking.create(data);
+    const entry = await Transfer.create(data);
 
     // Create relational data and return the entry.
-    return Banking.updateRelations({ _id: entry.id, values: relations });
+    return Transfer.updateRelations({ _id: entry.id, values: relations });
   },
 
   /**
-   * Promise to edit a/an banking.
+   * Promise to edit a/an transfer.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Banking.associations.map(a => a.alias));
-    const data = _.omit(values, Banking.associations.map(a => a.alias));
+    const relations = _.pick(values, Transfer.associations.map(a => a.alias));
+    const data = _.omit(values, Transfer.associations.map(a => a.alias));
 
     // Update entry with no-relational data.
-    const entry = await Banking.updateOne(params, data, { multi: true });
+    const entry = await Transfer.updateOne(params, data, { multi: true });
 
     // Update relational data and return the entry.
-    return Banking.updateRelations(Object.assign(params, { values: relations }));
+    return Transfer.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an banking.
+   * Promise to remove a/an transfer.
    *
    * @return {Promise}
    */
 
   remove: async params => {
     // Select field to populate.
-    const populate = Banking.associations
+    const populate = Transfer.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Banking
+    const data = await Transfer
       .findOneAndRemove(params, {})
       .populate(populate);
 
@@ -127,7 +127,7 @@ module.exports = {
     }
 
     await Promise.all(
-      Banking.associations.map(async association => {
+      Transfer.associations.map(async association => {
         if (!association.via || !data._id || association.dominant) {
           return true;
         }
@@ -148,22 +148,22 @@ module.exports = {
   },
 
   /**
-   * Promise to search a/an banking.
+   * Promise to search a/an transfer.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('banking', params);
+    const filters = strapi.utils.models.convertParams('transfer', params);
     // Select field to populate.
-    const populate = Banking.associations
+    const populate = Transfer.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    const $or = Object.keys(Banking.attributes).reduce((acc, curr) => {
-      switch (Banking.attributes[curr].type) {
+    const $or = Object.keys(Transfer.attributes).reduce((acc, curr) => {
+      switch (Transfer.attributes[curr].type) {
         case 'integer':
         case 'float':
         case 'decimal':
@@ -187,7 +187,7 @@ module.exports = {
       }
     }, []);
 
-    return Banking
+    return Transfer
       .find({ $or })
       .sort(filters.sort)
       .skip(filters.start)

@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "Banking",
+  "collectionName": "Account",
   "info": {
-    "name": "banking",
+    "name": "account",
     "description": ""
   },
   "options": {
@@ -15,7 +15,7 @@
     "accountNumber": {
       "type": "string"
     },
-    "amount": {
+    "balance": {
       "type": "integer"
     }
   }

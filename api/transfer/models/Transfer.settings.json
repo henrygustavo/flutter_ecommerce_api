@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "Transfer",
+  "info": {
+    "name": "transfer",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "accountSourceId": {
+      "type": "string"
+    },
+    "accountDestId": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "integer"
+    }
+  }
+}

@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/bankings",
-      "handler": "Banking.find",
+      "path": "/transfers",
+      "handler": "Transfer.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/bankings/count",
-      "handler": "Banking.count",
+      "path": "/transfers/count",
+      "handler": "Transfer.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/bankings/:_id",
-      "handler": "Banking.findOne",
+      "path": "/transfers/:_id",
+      "handler": "Transfer.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/bankings",
-      "handler": "Banking.create",
+      "path": "/transfers",
+      "handler": "Transfer.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/bankings/:_id",
-      "handler": "Banking.update",
+      "path": "/transfers/:_id",
+      "handler": "Transfer.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/bankings/:_id",
-      "handler": "Banking.destroy",
+      "path": "/transfers/:_id",
+      "handler": "Transfer.destroy",
       "config": {
         "policies": []
       }
