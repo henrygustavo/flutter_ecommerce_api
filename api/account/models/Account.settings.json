@@ -12,7 +12,7 @@
     "userId": {
       "type": "string"
     },
-    "accountNumber": {
+    "number": {
       "type": "string"
     },
     "balance": {
